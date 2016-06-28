@@ -16,6 +16,7 @@
 
 package demo;
 
+import config.processor.ProcessorApplication;
 import config.sink.SinkApplication;
 import config.source.SourceApplication;
 
@@ -28,10 +29,9 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class DoubleApplication {
 
 	public static void main(String[] args) {
-		new AggregateApplicationBuilder().
-				from(SourceApplication.class).args("--fixedDelay=5000")
-				.via(Processor.class)
-				.to(SinkApplication.class).args("--debug=true").run("--spring.application.name=aggregate-test");
+		new AggregateApplicationBuilder().from(SourceApplication.class).args("--fixedDelay=5000")
+				.via(ProcessorApplication.class).to(SinkApplication.class).args("--debug=true")
+				.run("--spring.application.name=aggregate-test");
 	}
 
 }

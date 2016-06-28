@@ -27,8 +27,15 @@ import org.springframework.messaging.Message;
 @EnableBinding(Processor.class)
 public class ProcessorModuleDefinition {
 
-	@Transformer
+	@Transformer(inputChannel = Processor.INPUT, outputChannel = Processor.OUTPUT)
 	public Message<?> transform(Message<?> inbound) {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("processor");
 		return inbound;
 	}
 }

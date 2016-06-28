@@ -6,5 +6,17 @@ spring:
       bindings:
         output:
           destination: xformed
+          binder: rabbit1
         input:
           destination: testtock
+          binder: rabbit1
+      binders:
+        rabbit1:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host:10.5.16.14
+                port:5672
+                username:guest
+                password:guest

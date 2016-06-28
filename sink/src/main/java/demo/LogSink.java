@@ -33,6 +33,12 @@ public class LogSink {
 
 	@ServiceActivator(inputChannel=Sink.INPUT)
 	public void loggerSink(Object payload) {
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		logger.info("Received: " + payload);
 	}
 

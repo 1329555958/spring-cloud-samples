@@ -43,7 +43,9 @@ public class TimeSource {
 
 	@InboundChannelAdapter(value = Source.OUTPUT)
 	public String timerMessageSource() {
-		return new SimpleDateFormat(this.options.getFormat()).format(new Date());
+		String msg = new SimpleDateFormat(this.options.getFormat()).format(new Date());
+		System.out.println(msg);
+		return msg;
 	}
 
 }
